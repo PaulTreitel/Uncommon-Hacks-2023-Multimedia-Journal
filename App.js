@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {ProfileScreen} from './today_page.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,7 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Welcome $username'}}
+          options={{title: 'Welcome '} }
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
@@ -51,9 +52,6 @@ const HomeScreen = ({navigation}) => {
       }
     />
   );
-};
-const ProfileScreen = ({navigation, route}) => {
-  return <Text>This is {route.params.name}'s profile</Text>;
 };
 
 // export default function MyStack() {
