@@ -1,21 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      {
-        
-      <View style={styles.container}>
-        <Text style={styles.red}>just red</Text>
-        <Text style={styles.bigBlue}>just bigBlue</Text>
-        <Text style={[styles.bigBlue, styles.red]}>bigBlue, then red</Text>
-        <Text style={[styles.red, styles.bigBlue]}>red, then bigBlue</Text>
-      </View>
-      
-      }
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: 'Welcome'}}
+        />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
@@ -24,12 +25,6 @@ export default App;
 
 
 
-
-// import * as React from 'react';
-// import {NavigationContainer} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-// const Stack = createNativeStackNavigator();
 
 // const MyStack = () => {
 //   return (
@@ -47,19 +42,19 @@ export default App;
 //   );
 // };
 
-// const HomeScreen = ({navigation}) => {
-//   return (
-//     <Button
-//       title="Go to Jane's profile"
-//       onPress={() =>
-//         navigation.navigate('Profile', {name: 'Jane'})
-//       }
-//     />
-//   );
-// };
-// const ProfileScreen = ({navigation, route}) => {
-//   return <Text>This is {route.params.name}'s profile</Text>;
-// };
+const HomeScreen = ({navigation}) => {
+  return (
+    <Button
+      title="Go to Jane's profile"
+      onPress={() =>
+        navigation.navigate('Profile', {name: 'Jane'})
+      }
+    />
+  );
+};
+const ProfileScreen = ({navigation, route}) => {
+  return <Text>This is {route.params.name}'s profile</Text>;
+};
 
 // export default function MyStack() {
 //   return (
